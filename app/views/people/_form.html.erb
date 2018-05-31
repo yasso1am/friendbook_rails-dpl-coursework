@@ -1,7 +1,8 @@
-<%= form_with(model: person, local: true) do |form| %>
+<%= form_with(model: person, local: true, class: 'ui form') do |form| %>
   <% if person.errors.any? %>
-    <div id="error_explanation">
+    <div id="notice" class="error" >
       <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+      
 
       <ul>
       <% person.errors.full_messages.each do |message| %>
@@ -32,6 +33,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: 'ui button primary' %>
   </div>
 <% end %>

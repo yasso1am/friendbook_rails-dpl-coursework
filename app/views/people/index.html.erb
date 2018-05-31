@@ -1,39 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="ui header">People</h1>
-
-<table class="ui striped table">
-  <thead>
-    <tr class="center aligned">
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Avatar</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @people.each do |person| %>
-      <tr class="center aligned">
-        <td><%= person.first_name %></td>
-        <td><%= person.last_name %></td>
-          <td>
-          <img 
-            class="ui avatar image small"
-            alt="user avatar"
-            src="https://robohash.org/<%= person.avatar %>?set=set1" 
-            />
-            </td>
-        <td><%= person.email %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Person', new_person_path %>
+  <div class="ui divider"></div>
+
+<div class="ui grid">
+<% @people.each do |person| %>
+  <div class="sixteen wide mobile eight wide tablet four wide computer column">
+    <div class="ui card">
+      <div class="image">
+        <img
+          alt="user avatar"
+          src="https://robohash.org/<%= person.avatar %>?set=1"
+          />
+      </div>
+      <div class="content">
+        <%= link_to "#{person.first_name} #{person.last_name}", person, class: "header" %>
+        </div>
+        <div class="extra content">
+          <div class="ui two buttons">
+            <div class="ui basic green button">
+              <%= link_to 'Edit', edit_person_path(person) %>
+            </div>
+            <div class="ui basic red button">
+              <%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>  
+
+<% end %>
+</div>
