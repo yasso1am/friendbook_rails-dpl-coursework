@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @person.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @person.last_name %>
-</p>
-
-<p>
-  <strong>Avatar:</strong>
-  <%= @person.avatar %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @person.email %>
-</p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<div class="ui card">
+  <div class="image">
+    <img 
+    alt="user avatar"
+    src="https://robohash.org/<%= @person.avatar %>?set=1"
+    />
+  </div>
+  <div class="content">
+    <p class="header">
+      <%= @person.first_name %> <%= @person.last_name %>
+    </p>
+    <div class="description">
+      <%= @person.email %>
+    </div>
+  </div>
+  <div class="extra content">
+    <%= link_to 'Edit', edit_person_path(@person) %> 
+    |
+    <%= link_to 'Back', people_path %>
+    </div>
+</div>
